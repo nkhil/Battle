@@ -1,3 +1,2 @@
-# config.ru (run with rackup)
-require './app'
-run Sinatra::Application
+require_relative "./app"
+run Battle
