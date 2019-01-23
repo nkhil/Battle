@@ -9,4 +9,10 @@ feature 'Capybara tests...' do
     sign_in_and_play
     expect(page).to have_content 'Hitpoints: 23'
   end
+
+  scenario "Player 1 can see confirmation of attack" do
+    sign_in_and_play
+    click_button 'Attack' 
+    expect(page).to have_content 'Nikhil attacks Will'
+  end
 end
