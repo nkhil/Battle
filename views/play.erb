@@ -2,3 +2,6 @@
 
 <h2><%= @player1 %> <%= @player2 %></h2>
 <h3>Hitpoints: <%= @player2_hitpoints %></h3>
+<form action="/attack-confirmation" method="get">
+  <input type="submit" value="Attack">
+</form>

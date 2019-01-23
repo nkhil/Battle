@@ -22,8 +22,13 @@ class Battle < Sinatra::Base
     @player2_hitpoints = session[:player2_hitpoints]
     erb :play
   end
-
-
+  
+  get '/attack-confirmation' do
+    @player1 = session[:player1]
+    @player2 = session[:player2]
+    erb :attack_confirmation
+    
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
