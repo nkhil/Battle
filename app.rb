@@ -10,25 +10,26 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
+    session[:count] = 0
     session[:player1] = params[:player1]
     session[:player2] = params[:player2]
-    session[:player2_hitpoints] = 23
     redirect '/play'
   end
 
   get '/play' do
     @player1 = session[:player1]
     @player2 = session[:player2]
-    @player2_hitpoints = session[:player2_hitpoints]
+    @player2_hitpoints = 100 - session[:count]
+    @player2_hitpoints -= 2 if params[:attack] == 'Attack'
+    params[:attack] = nil
     erb :play
   end
   
-  get '/attack-confirmation' do
-    @player1 = session[:player1]
-    @player2 = session[:player2]
-    erb :attack_confirmation
-    
+  post '/attack' do
+    session[:count] += 10
+    redirect '/play'
   end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
