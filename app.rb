@@ -5,10 +5,10 @@ class Battle < Sinatra::Base
     erb :index
   end
 
-  post '/page' do
+  post '/name' do
     @player1 = params[:player1]
     @player2 = params[:player2]
-    erb :page
+    erb :name
   end
 
   # start the server if ruby file executed directly
