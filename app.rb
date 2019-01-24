@@ -22,11 +22,11 @@ class Battle < Sinatra::Base
     @player1 = $player1.name
     @player2 = $player2.name
     @player2_hitpoints = $player2.hitpoints
+    Game.new.attack(@player2)
     erb :play
   end
   
   post '/attack' do
-    $player2.take_damage
     redirect '/play'
   end
 
